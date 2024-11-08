@@ -4,6 +4,7 @@ import pick from "../../../shared/pick";
 import { adminFilterableFields } from "./admin.constant";
 import { AdminService } from "./admin.service";
 import sendResponse from "../../../shared/sendResponse";
+import httpStatus from "http-status";
 
 const getAllAdmin = async (req: Request, res: Response) => {
   try {
@@ -13,7 +14,7 @@ const getAllAdmin = async (req: Request, res: Response) => {
     const result = await AdminService.getAllFromDB(filter, options);
 
     sendResponse(res, {
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       success: true,
       message: "All admin retrieved successfully",
       meta: result.meta,
