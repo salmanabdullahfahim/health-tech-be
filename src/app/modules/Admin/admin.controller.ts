@@ -30,12 +30,13 @@ const getAdminById = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
   try {
-    const result = await AdminService.getAdminById(req.params.id);
+    const result = await AdminService.getAdminById(id);
     sendResponse(res, {
-      statusCode: 200,
+      statusCode: httpStatus.OK,
       success: true,
-      message: "Admin retrieved successfully",
+      message: "Admin data fetched by id!",
       data: result,
     });
   } catch (err) {
